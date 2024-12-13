@@ -1,9 +1,9 @@
+# doc_processor.py
 from typing import Dict, Callable, List
 import multiprocessing
 from functools import reduce
 import mmap
 import os
-
 
 def word_count_processor(text: str) -> Dict:
     """Process chunk to count words."""
@@ -27,5 +27,5 @@ def unique_words_processor(text: str) -> Dict:
     words = text.lower().replace(',', '').replace('.', '').split()
     return {
         'unique_words_count': len(set(words)),
-        'unique_words': list(set(words)),
+        'unique_words': set(words), # Changed to set
     }
